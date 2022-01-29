@@ -1,0 +1,9 @@
+{
+    "users": {
+        "noah@perrybrain.com": {
+            "username": "admin",
+            "password": "password1234",
+            "email": "noah@perrybrain.com"
+        }
+    }
+}

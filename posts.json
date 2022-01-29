@@ -1,0 +1,16 @@
+{
+    "posts": [
+        {
+            "author": "Noah Perry",
+            "title": "Title Test!",
+            "content": "content boi",
+            "date_posted": "April 1, 2020, at 3:43 PM"
+        },
+        {
+            "author": "Kayla Perry",
+            "title": "Content2",
+            "content": "More content!",
+            "date_posted": "April 2, 2020, at 3:41 PM"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "CTFChallenge",
+  "version": "1.0.0",
+  "description": "A server for a capture the flag hacking challenge.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "express": "^4.17.1",
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Noah Perry",
+  "license": "ISC"
+}
