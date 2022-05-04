@@ -1,0 +1,29 @@
+#posts > article > div > div > h2 {
+	color: #5fca02;
+}
+
+.form-control {
+	border-color: #171717;
+	background: #242424;
+	color: #ffffff;
+}
+
+
+/* Change the white to any color */
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus,
+.form-control:-webkit-autofill:active {
+    transition: all 50000s ease-in-out 0s;
+    transition-property: background-color, color;
+}
+
+.btn-primary, .btn-primary:focus {
+	transition: 0.3s ease-in-out;
+	background-color: #38b000 !important;
+	border: #b8ffb8 !important;
+}
+
+.btn-primary:hover {
+	transform: scale(1.1, 1.1);
+}

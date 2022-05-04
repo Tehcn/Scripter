@@ -1,0 +1,70 @@
+<!-- 
+    Site built with Express and Bootstrap
+    Built by: Noah Perry
+-->
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <meta name='description' content='Simple social media site.'>
+    <link rel='shortcut icon' href='/static/images/tweeter.ico' type='image/x-icon'>
+    <title>Pixel</title>
+
+	<script>
+		const params = new Proxy(new URLSearchParams(window.location.search), { get: (searchParams, prop) => searchParams.get(prop) });
+	</script>
+	<script src='/static/scripts/template.js' defer></script>
+
+    <!-- BOOTSTRAP START -->
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
+    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>
+    <!-- BOOTSTRAP END -->
+    <link rel='stylesheet' type='text/css' href='/static/styles/main.css'>
+	<link rel='stylesheet' type='text/css' href='/static/styles/form.css'>
+</head>
+<body>
+	 <header class='site-header'>
+        <nav class='navbar navbar-expand-md navbar-dark bg-steel fixed-top'>
+            <div class='container'>
+                <a class='navbar-brand mr-4' href='/'>Pixel</a>
+                <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarToggle' aria-controls='navbarToggle' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+                </button>
+                <div class='collapse navbar-collapse' id='navbarToggle'>
+                    <div class='navbar-nav mr-auto'>
+                        <a class='nav-item nav-link' onclick='render(`home`)'>Home</a>
+                        <a class='nav-item nav-link' onclick='render(`about`)'>About</a>
+                        <a class='nav-item nav-link' type='button' class='btn btn-primary' onclick='render(`post`)'>Post</a>
+                    </div>
+                    <!-- Navbar Right Side -->
+                    <div class='navbar-nav' id='navbar-right'>
+                    	
+					</div>
+					<script>
+						let right = document.querySelector('#navbar-right');
+
+						let not_logged_in = `<a class='nav-item nav-link' onclick='render("login")'>Login</a><a class='nav-item nav-link'onclick='render("register")'>Register</a>`;
+						let logged_in = `<a class='nav-item nav-link' onclick='render("account")'>{account_name}</a><a class='nav-item nav-link' href='/logout'>Logout</a>`;
+						fetch('/user/data')
+							.then(res => res.json())
+							.then(json => {
+								if(json.loggedIn) {
+									right.innerHTML = logged_in.replace('{account_name}', json.username);
+									if(!document.cookie.includes('username')) document.cookie += `username=${json.username};`
+								}
+								else {
+									right.innerHTML = not_logged_in;
+									document.cookie = '';
+								}
+							})
+							.catch(err => console.error(`Error getting session data: ${err}`));
+					</script>
+                </div>
+            </div>
+        </nav>
+    </header>
+	<main role='main' class='container'></main>
+</body>

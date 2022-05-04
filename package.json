@@ -1,11 +1,13 @@
 {
-  "name": "CTFChallenge",
+  "name": "tweeter",
   "version": "1.0.0",
   "description": "A server for a capture the flag hacking challenge.",
   "main": "index.js",
   "dependencies": {
     "axios": "^0.21.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "typescript": "^4.0.3"
   },
   "devDependencies": {},
