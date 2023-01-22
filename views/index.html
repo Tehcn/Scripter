@@ -1,4 +1,4 @@
-<!-- 
+ <!-- 
     Site built with Express and Bootstrap
     Built by: Noah Perry
 -->
@@ -8,13 +8,14 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
     <meta name='description' content='Simple social media site.'>
-    <link rel='shortcut icon' href='/static/images/tweeter.ico' type='image/x-icon'>
-    <title>Pixel</title>
+    <link rel='shortcut icon' href='/static/images/favicon.ico' type='image/x-icon'>
+    <title>Scripter</title>
 
 	<script>
 		const params = new Proxy(new URLSearchParams(window.location.search), { get: (searchParams, prop) => searchParams.get(prop) });
 	</script>
 	<script src='/static/scripts/template.js' defer></script>
+	<script src='/static/scripts/keep-alive.js'></script>
 
     <!-- BOOTSTRAP START -->
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
@@ -29,7 +30,7 @@
 	 <header class='site-header'>
         <nav class='navbar navbar-expand-md navbar-dark bg-steel fixed-top'>
             <div class='container'>
-                <a class='navbar-brand mr-4' href='/'>Pixel</a>
+                <a class='navbar-brand mr-4' href='/'>Scripter</a>
                 <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarToggle' aria-controls='navbarToggle' aria-expanded='false' aria-label='Toggle navigation'>
                 <span class='navbar-toggler-icon'></span>
                 </button>

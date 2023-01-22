@@ -1,3 +1,3 @@
 (() => {
-	if(params.err) document.querySelector('#error').innerHTML = params.err
+	if(params.err) document.querySelector('#error').innerHTML = params.err;
 })();

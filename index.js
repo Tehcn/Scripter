@@ -3,6 +3,7 @@ const url = require('url');
 const crypto = require('crypto');
 const cors = require('cors');
 const session = require('express-session');
+const nodemailer = require('nodemailer');
 
 const { users } = require('./users.json');
 const { existsSync } = require('fs');
@@ -14,14 +15,43 @@ app.use(session({
 	name: 'sessionID',
 	saveUninitialized: false,
 	resave: true,
-	cookie: { maxAge: 36000 }
+	cookie: { maxAge: 3600000 } // one hour
 }));
 
 const corsOptions = {
-    origin: 'https://tweeter.awesomehelper.repl.co',  //Your Client, do not write '*'
+    origin: 'https://scripter.awesomehelper.repl.co',  // Your Client, do not write '*'
     credentials: true,
 };
+
 app.use(cors(corsOptions));
+
+// const emailTransporter = nodemailer.createTransport({
+// 	host: 'smtp.perrybrain.com',
+// 	port: 25,
+// 	auth: {
+// 		user: process.env['transportEmail'],
+// 		pass: process.env['transportPassword']
+// 	}
+// });
+
+function sendEmail(to, subject, content) {
+	let from = process.env['transportEmail'];
+
+	let options = {
+		from: from,
+		to: to,
+		subject: subject,
+		html: content
+	}
+
+	emailTransporter.sendMail(options, (err, info) => {
+		if(err) console.error(err);
+		else console.log(`Email sent to ${to}: ${info.response}`);
+	});
+	
+}
+
+// sendEmail('noah@perrybrain.com', 'Test Email', '<h1>This is a test email from NodeJS!</h1>');
 
 // hash function
 function sha256(str) {
@@ -81,12 +111,21 @@ app.post('/login', (req, res) => {
 	res.redirect('/');
 });
 
+app.post('/register', (req, res) => {
+	let email, username, password, confirm;
+
+	// if(password == confirm)
+    res.sendStatus(500);
+});
+
 app.post('/post', (req, res) => {
 	if(!req.session.loggedIn)
-		res.redirect('/?page=post&err=Not logged in.').status(401);
-	console.log(req.body);
+		res.status(401).redirect('/?page=post&err=Not logged in.')
+
+	
+	
 	res.status(201);
-	res.send(req.body);
+	res.redirect('/');
 });
 
 app.get('/logout', (req, res) => {
@@ -98,7 +137,12 @@ app.get('/logout', (req, res) => {
     catch(err) {
         res.sendFile('./views/logout.html', { root: __dirname });
     }
-})
+});
+
+app.get('/keep-alive', (req, res) => {
+	req.session.keep_alive = 3600000;
+	res.sendStatus(200);
+});
 
 // STATIC RESOURCES
 
@@ -111,11 +155,6 @@ app.get('/data/:file', (req, res) => {
 	if(req.params.file == 'users.json') res.sendStatus(404);
 	res.sendFile(req.params.file, { root: __dirname });
 });
-
-// app.use(function (req, res, next) {
-//     console.log(`404 error while requesting: ${url.parse(url.req).pathname}`)
-//     res.status(404).sendFile('./views/404.html', {root: __dirname})
-// })
 
 // PORT / LISTENER
 app.listen(3000, () => {

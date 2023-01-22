@@ -3,7 +3,8 @@
         "noah@perrybrain.com": {
             "username": "admin",
             "password": "b9c950640e1b3740e98acb93e669c65766f6670dd1609ba91ff41052ba48c6f3",
-            "email": "noah@perrybrain.com"
+            "email": "noah@perrybrain.com",
+			"follows": []
         }
     }
 }

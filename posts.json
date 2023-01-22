@@ -1,16 +1,10 @@
 {
     "posts": [
         {
-            "author": "Noah Perry",
-            "title": "Title Test!",
-            "content": "content boi",
-            "date_posted": "April 1, 2020, at 3:43 PM"
-        },
-        {
-            "author": "Kayla Perry",
-            "title": "Content2",
-            "content": "More content!",
-            "date_posted": "April 2, 2020, at 7:27 PM"
+            "author": "admin",
+            "title": "First Ever Post",
+            "content": "manual editing post metadata lmao",
+            "date_posted": "April 20, 2069, at 7:27 PM"
         }
     ]
 }
